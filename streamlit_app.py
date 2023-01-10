@@ -25,8 +25,6 @@ fruits_to_show = my_fruit_list.loc[fruits_selected]
 streamlit.dataframe(fruits_to_show)
 
 fruit_choice = streamlit.text_input('What fruit would you like information about?','Kiwi')
-streamlit.write('The user entered ', fruit_choice)
-
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/{}".format(fruit_choice))
 streamlit.header("Fruityvice Fruit Advice!")
 
@@ -48,5 +46,5 @@ streamlit.dataframe(my_data_rows)
 add_my_fruit = streamlit.text_input('What fruit would you like to add?','jackfruit')
 streamlit.write('Thanks for adding ', add_my_fruit)
 
-my_cur.execute("insert into pc_rivery_db.public.fruit_load_list VALUES ('From Streamlit')")
+my_cur.execute("insert into pc_rivery_db.public.fruit_load_list VALUES ('{}')".format(add_my_fruit))
 
